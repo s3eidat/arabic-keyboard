@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Arabic Keyboard — Type Arabic Online Without an Arabic Keyboard | S3eidat Tools</title>
+<meta name="description" content="Free on-screen Arabic keyboard: click the standard Arabic layout, type on your English keyboard and get the Arabic letter in the same position, or type Arabizi like mar7aba and get مرحبا. Harakat, copy, word count. Private, runs in your browser.">
+<meta property="og:title" content="Arabic Keyboard — لوحة مفاتيح عربية">
+<meta property="og:description" content="Type Arabic without an Arabic keyboard: on-screen layout, physical-key mapping and Arabizi. Runs 100% in your browser.">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<!--s3:seo-->
+<link rel="canonical" href="https://s3eidat.github.io/arabic-keyboard/">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0d0f12">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="S3eidat Tools">
+<meta property="og:url" content="https://s3eidat.github.io/arabic-keyboard/">
+<meta property="og:image" content="https://s3eidat.github.io/arabic-keyboard/screenshot.png">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arabic Keyboard — Type Arabic without an Arabic keyboard">
+<meta name="twitter:description" content="Type Arabic without an Arabic keyboard. Free, private and runs 100% in your browser: no sign-up, no uploads.">
+<meta name="twitter:image" content="https://s3eidat.github.io/arabic-keyboard/screenshot.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Arabic Keyboard", "url": "https://s3eidat.github.io/arabic-keyboard/", "description": "Type Arabic without an Arabic keyboard. Free, private and runs 100% in your browser: no sign-up, no uploads.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (web browser)", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "image": "https://s3eidat.github.io/arabic-keyboard/screenshot.png", "author": {"@type": "Person", "name": "s3eidat", "url": "https://github.com/s3eidat"}}</script>
+<!--/s3:seo-->
+</head>
+<body data-tool="arabic-keyboard">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Arabic Keyboard <span class="ak-h" lang="ar" dir="rtl">لوحة مفاتيح عربية</span></h1>
+    <p>Type Arabic with no Arabic keyboard installed: click the on-screen keys, press keys on your English keyboard to get the Arabic letter in the same spot, or write Arabizi like <span class="mono">mar7aba</span> and get مرحبا.</p>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <div class="seg" id="mode" role="group" aria-label="Typing mode">
+        <button aria-pressed="true" data-v="layout">Arabic layout <span lang="ar">· الترتيب العربي</span></button>
+        <button aria-pressed="false" data-v="arabizi">Arabizi <span lang="ar">· عربيزي</span></button>
+        <button aria-pressed="false" data-v="native">My own keyboard <span lang="ar">· لوحتي</span></button>
+      </div>
+      <label class="field ak-size">Text size <span class="faint" id="sizeLbl">24 px</span>
+        <input type="range" id="size" min="16" max="56" step="2" value="24">
+      </label>
+    </div>
+    <p class="faint ak-modehint" id="modeHint"></p>
+
+    <div class="ak-izi" id="izi" hidden>
+      <label class="field" for="iziIn"><span>Type Arabizi, then press Enter to add it · <bdi lang="ar">اكتب بالحروف اللاتينية</bdi></span></label>
+      <div class="row ak-izi-row">
+        <input class="input grow mono" id="iziIn" dir="ltr" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="mar7aba, kifak?">
+        <button class="btn primary" id="iziAdd">Insert <span lang="ar">إدراج</span></button>
+      </div>
+      <div class="ak-preview" id="iziOut" dir="rtl" lang="ar" aria-live="polite"></div>
+    </div>
+
+    <label class="sr" for="text">Arabic text</label>
+    <textarea class="textarea prose ak-text mt" id="text" dir="rtl" lang="ar" spellcheck="false" placeholder="اكتب هنا…"></textarea>
+
+    <div class="row between mt">
+      <div class="row ak-counts" id="counts" aria-live="polite"></div>
+      <div class="row">
+        <button class="btn ghost small" id="clear"><svg class="i"><use href="#i-trash"/></svg>Clear</button>
+        <button class="btn small" id="save"><svg class="i"><use href="#i-download"/></svg>.txt</button>
+        <button class="btn small primary" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy <span lang="ar">نسخ</span></button>
+      </div>
+    </div>
+
+    <div class="ak-kb mt" id="kb" dir="ltr" role="group" aria-label="Arabic keyboard"></div>
+    <div class="ak-marks mt" id="marks" role="group" aria-label="Harakat and punctuation"></div>
+    <div class="row between mt ak-kbbar">
+      <p class="faint ak-note">Small Latin letters show which English key types each letter. Shift gives harakat and hamza forms; double-click Shift to lock it.</p>
+      <div class="row">
+        <div class="seg" id="digits" role="group" aria-label="Digits">
+          <button aria-pressed="true" data-v="w">123</button>
+          <button aria-pressed="false" data-v="a"><bdi>١٢٣</bdi></button>
+        </div>
+        <label class="check"><input type="checkbox" id="noSys"> Hide phone keyboard</label>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
